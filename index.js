@@ -5,6 +5,15 @@ const departments= require('./info/department');
 const roles= require('./info/role');
 const employees= require('./info/employee');
 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'seQ&w3bY',
+    database: 'officedb'
+});
+
+
 const question= [
     {
         type: 'list',
@@ -54,3 +63,5 @@ function applicationQ(){
 }
 
 applicationQ();
+
+module.exports= connection;

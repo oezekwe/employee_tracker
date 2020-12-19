@@ -1,15 +1,8 @@
 const fs = require('fs');
+const connection= require('../index');
 const inquirer= require('inquirer');
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'seQ&w3bY',
-    database: ''
-});
-  
 connection.connect(err => {
     if (err) throw err;
 });
@@ -19,27 +12,32 @@ const questions= [
     {
         type: 'input',
         name: 'firstN',
-        message: "Enter employee\'s first name:",
+        message: "Enter employee\'s first name:"
     },
     {
         type: 'input',
         name: 'lastN',
-        message: "Enter employee\'s last name:",
+        message: "Enter employee\'s last name:"
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'Role',
-        message: "Enter employee\'s role:",
+        message: "Select employee\'s role:",
+        choices: ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 
+        'Account Manager', 'Accountant', 'Legal Team Lead']
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'manager',
-        message: "Enter employee\'s manager name?",
+        message: "Select employee\'s manager name?",
     }, 
 ];
 
 function addItem(){
+    inquirer.prompt(questions)
+    .then(answer=>{
 
+    });
 }
 
 function viewItems(){
