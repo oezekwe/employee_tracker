@@ -3,9 +3,9 @@ const connection= require('../index');
 const inquirer= require('inquirer');
 const mysql = require('mysql2');
 
-connection.connect(err => {
+/*connection.connect(err => {
     if (err) throw err;
-});
+});*/
 
 
 const questions= [
@@ -36,7 +36,15 @@ function addItem(){
 }
 
 function viewItems(){
+    connection.connect(err => {
+        if (err) throw err;
+        connection.query(
+            'SELECT * FROM role',
 
+            function(err, res){
+                if(err) throw err;
+                console.table(res);
+            }
+        );
+    });
 }
-
-module.exports= {addItem, viewItems};

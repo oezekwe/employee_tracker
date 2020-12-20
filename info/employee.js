@@ -3,9 +3,10 @@ const connection= require('../index');
 const inquirer= require('inquirer');
 const mysql = require('mysql2');
 
-connection.connect(err => {
+/*connection.connect(err => {
     if (err) throw err;
-});
+    addItem();
+});*/
   
 
 const questions= [
@@ -47,5 +48,3 @@ function viewItems(){
 function changeItem(){
 
 }
-
-module.exports= {addItem, viewItems, changeItem};
