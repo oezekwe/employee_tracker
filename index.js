@@ -28,7 +28,6 @@ function viewItems(changeG){
             function(err, res){
                 if(err) throw err;
                 console.table(res);
-                console.log("done");
             }
         );
     }
