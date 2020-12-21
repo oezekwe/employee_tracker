@@ -1,10 +1,6 @@
-const fs = require('fs');
 const connection= require('./info/connection');
 const inquirer= require('inquirer');
-const mysql = require('mysql2');
-/*const departments= require('./info/department');
-const roles= require('./info/role');
-const employees= require('./info/employee');*/
+const insert= require('./info/insertItems');
 
 const question= [
     {
@@ -57,22 +53,17 @@ function viewItems(changeG){
             }
         )
     }
-    applicationQ();
-}
-
-function addItem(){
-
 }
 
 function applicationQ(){
     inquirer.prompt(question)
-    .then(answer=>{
+    .then((answer)=>{
         var ansStr= answer.options;
         if(ansStr.includes("View")){
             viewItems(ansStr);
         }
         else if(ansStr.includes("Add")){
-            addItem(ansStr);
+            insert(ansStr);
         }
         else if(ansStr.includes("Update")){
             changeItem();
@@ -80,30 +71,6 @@ function applicationQ(){
         else{
             process.exit();
         }
-        /*switch(answer.options){
-            case('View departments'):
-                viewItems(ansStr);
-                break;
-            case('View roles'):
-                viewItems(2);
-                break;
-            case('View employees'):
-                viewItems(3);
-                break;
-            case('Add department'):
-                addItem(1);
-                break;
-            case('Add roles'):
-                addItem(2);
-                break;
-            case('Add employees'):
-                addItem(3);
-                break;
-            case('Update employee\'s role'):
-                changeItem();
-                break;
-            default:
-                process.exit();
-        }*/
+        applicationQ();
     })
 }
